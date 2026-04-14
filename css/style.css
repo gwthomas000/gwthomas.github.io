@@ -1,0 +1,44 @@
+.hero-container {
+background-position: relative;
+width: 100%;
+margin: auto;
+
+}
+
+.hero-image {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    height: 100%;
+}
+
+/* gemini, thank you */
+.hero-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50%;
+    width: 100%;
+    display: flex; /* Helps to center the text */
+    flex-direction: column;
+    display: flex;
+    justify-content: center; /* Vertically centers the content */
+    align-items: center; /* Horizontally centers the content */
+    text-align: center;
+    color: rgb(0, 0, 0); /* Make the text visible over the image */
+    
+}
+
+.hero-content2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+}

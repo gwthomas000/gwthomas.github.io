@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery</title>
+  <link rel="stylesheet" href="css/gallery.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- Navigation -->
+<header class="navbar">
+  <div class="brand">Lorem Ipsum Portfolio</div>
+  <nav id="primary-nav">
+    <a href="index.html">Home</a>
+    <a href="gallery.html" class="active">Gallery</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+<section class="apple-slider">
+
+  <div class="slide active">
+    <img src="https://placehold.co/1600x900/000000/ffffff?text=Slide+1" alt="Slide 1">
+    <div class="text-block">
+      <h1>Design That Speaks</h1>
+      <p>Simplicity with purpose.</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <img src="https://placehold.co/1600x900/111111/ffffff?text=Slide+2" alt="Slide 2">
+    <div class="text-block">
+      <h1>Made to Inspire</h1>
+      <p>Where creativity begins.</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <img src="https://placehold.co/1600x900/222222/ffffff?text=Slide+3" alt="Slide 3">
+    <div class="text-block">
+      <h1>Refined and Focused</h1>
+      <p>Every detail matters.</p>
+    </div>
+  </div>
+
+</section>
+<!-- Title Section -->
+<section class="showcase-title">
+  <h1>Gallery</h1>
+  <p>A collection inspired by simplicity, clarity, and emotion.</p>
+</section>
+
+<!-- Apple Style Grid -->
+<section class="apple-grid">
+
+  <div class="grid-item reveal">
+    <img src="https://placehold.co/900x600" alt="Elegant Design">
+    <h2>Elegant Form</h2>
+    <p>Where design meets intention.</p>
+  </div>
+
+  <div class="grid-item reveal">
+    <img src="https://placehold.co/900x600" alt="Precision Focus">
+    <h2>Precision Detail</h2>
+    <p>Focus in every corner.</p>
+  </div>
+
+  <div class="grid-item reveal">
+    <img src="https://placehold.co/900x600" alt="Flow of Design">
+    <h2>Natural Flow</h2>
+    <p>Minimal yet expressive.</p>
+  </div>
+
+  <div class="grid-item reveal">
+    <img src="https://placehold.co/900x600" alt="Light and Shadow">
+    <h2>Light & Shadow</h2>
+    <p>A quiet moment of clarity.</p>
+  </div>
+
+</section>
+
+<!-- Soft Scroll Reveal -->
+<script>
+const reveals = document.querySelectorAll('.reveal');
+
+const revealOnScroll = () => {
+  const triggerPoint = window.innerHeight * 0.88;
+  reveals.forEach((el, index) => {
+    const top = el.getBoundingClientRect().top;
+    if (top < triggerPoint) {
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, index * 140);
+    }
+  });
+};
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.apple-slider .slide');
+
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove('active'));
+  slides[index].classList.add('active');
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+
+setInterval(nextSlide, 5000); // 5 second soft fade interval
+</script>
+</body>
+</html>

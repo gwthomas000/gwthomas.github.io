@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+    background: linear-gradient(
+        to bottom,         /* Direction: from top to bottom */
+        black 33.33%,      /* Black fills the first 33.33% */
+        white 33.33%,      /* White starts at 33.33% and stops at 66.66% */
+        white 66.66%,
+        #de0000 66.66%     /* Red starts at 66.66% and fills the rest */
+    );
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+        p {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar Component Start -->
+    <!-- UPDATED: Changed background from bg-white to bg-gray-900 (Black) -->
+    <nav class="fixed top-0 left-0 w-full bg-black shadow-lg z-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Brand Section -->
+                <div class="flex-shrink-0 ">
+                    <a href="#" class="text-2xl font-bold text-indigo-600 hover:text-indigo-800 transition duration-150">
+                        <img src="images/prussia_flag.png" alt="prussia state flag" width="95" style="border-radius: 100%; margin-left: 10px;">
+                    </a>
+                </div>
+
+                <!-- Desktop Menu Links (Visible on Medium screens and up) -->
+                <div class="hidden md:flex space-x-4">
+                    <!-- UPDATED: Text color changed to text-white and hover states adjusted -->
+                    <a href="index.html" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-full text-sm font-medium transition duration-150">Home</a>
+                    <a href="timeline.html" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-full text-sm font-medium transition duration-150">Timeline</a>
+                    <a href="historical-figures.html" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-full text-sm font-medium transition duration-150">Historical Figures</a>
+                    <a href="detailed-dates.html" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-full text-sm font-medium transition duration-150">Significant Dates</a>
+                    
+                    
+                    <!-- Highlighted Link (Call-to-Action) - Retained original styling for contrast -->
+                    <a href="about.html" class="px-3 py-2 rounded-full text-sm font-medium bg-[#de0000] text-white hover:bg-[#e35453] transition duration-150 shadow-md" style="margin-right: 10px;">
+                        About
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button (Hamburger Icon - Visible on Small screens) -->
+                <div class="md:hidden">
+                    <!-- UPDATED: Hamburger icon color changed to text-white and hover adjusted -->
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition duration-150" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        
+                        <!-- Hamburger Icon (Open state) -->
+                        <svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- X Icon (Closed state) -->
+                        <svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default, toggled by JS) -->
+        <div class="md:hidden" id="mobile-menu">
+            <!-- UPDATED: Background changed to bg-gray-900 (Black) -->
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center bg-black-000">
+                <!-- UPDATED: Text color changed to text-white and hover states adjusted -->
+                <a href="index.html" class="block text-base font-medium text-white hover:bg-gray-700 hover:text-white rounded-lg py-2 px-3 transition duration-150">Home</a>
+                <a href="timeline.html" class="block text-base font-medium text-white hover:bg-gray-700 hover:text-white rounded-lg py-2 px-3 transition duration-150">Timeline</a>
+                <a href="historical-figures.html" class="block text-base font-medium text-white hover:bg-gray-700 hover:text-white rounded-lg py-2 px-3 transition duration-150">Historical Figures</a>
+                <a href="detailed-dates.html" class="block text-base font-medium text-white hover:bg-gray-700 hover:text-white rounded-lg py-2 px-3 transition duration-150">Significant Dates</a>
+                
+                
+                <!-- Highlighted Link (Call-to-Action) -->
+                <a href="about.html" class="block text-base font-medium mt-1 bg-[#de0000] text-white hover:bg-[#e35453] rounded-lg py-2 px-3 shadow-md transition duration-150">
+                    About
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navigation Bar Component End -->
+
+    <!-- Main Content Area -->
+    <!-- (Your main content would go here, which is fine as-is) -->
+    
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+
+            // Start with the menu hidden
+            menu.classList.add('hidden');
+            iconOpen.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+
+            button.addEventListener('click', () => {
+                const isMenuOpen = menu.classList.contains('hidden');
+
+                if (isMenuOpen) {
+                    // Open the menu
+                    menu.classList.remove('hidden');
+                    iconOpen.classList.add('hidden');
+                    iconClose.classList.remove('hidden');
+                } else {
+                    // Close the menu
+                    menu.classList.add('hidden');
+                    iconOpen.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+    <!--timeline start-->
+    <main>
+        <!--card 1-->
+        <div class="content-row image-left">
+            <div class="image-content">
+                <img src="images/timeline1.jpg" alt="Teutonic Knights in Battle">
+            </div>
+            <div class="text-content">
+                <p class="white-text"> 13th Century Conquest (Teutonic Knights in Battle): The period begins with the Prussian Crusade. The image represents the conquest and subjugation of the native Baltic tribes by the German Teutonic Knights, who established a brutal but powerful military theocracy.</p>
+            </div>
+        </div>
+        <!--card 2-->
+        <div class="content-row">
+            <div class="text-content">
+                <p class="white-text"> The Ordensstaat Capital (Marienburg Castle): The massive, imposing brick fortress of Marienburg (Malbork) symbolizes the peak of the Order's territorial and economic power, serving as the central government and defense hub of the entire state.</p>
+            </div>
+            <div class="image-content">
+                <img src="images/timeline2.jpg" alt="Marienburg Castle (Malbork)">
+            </div>
+        </div>
+        <!--card 3-->
+        <div class="content-row image-left">
+            <div class="image-content">
+                <img src="images/timeline3.jpg" alt="Albert of Hohenzollern Announcing Secularization">
+            </div>
+            <div class="text-content">
+                <p class="white text"> 1525: Secularization (Albert of Hohenzollern): The image depicts the revolutionary moment when the state was secularized and became the hereditary, Lutheran Duchy of Prussia. This move dissolved the medieval Order and placed the territory under the Hohenzollern dynasty (a branch of which already ruled Brandenburg).</p>
+            </div>
+        </div>
+        <!--card 4-->
+        <div class="content-row">
+            <div class="text-content">
+                <p> 17th Century Militarization (The Great Elector's Army): This image represents the efforts of Frederick William, the "Great Elector," to build the first reliable standing army. This military force was key to securing the Duchy's full sovereignty from Polish control in 1660 and unifying the disparate Brandenburg-Prussian territories.</p>
+            </div>
+            <div class="image-content">
+                <img src="images/timeline4.jpg" alt="Frederick William, the Great Elector Reviewing His Army">
+            </div>
+        </div>
+        <!--card 5-->
+        <div class="content-row">
+            <div class="image-content">
+                <img src="images/timeline5.jpg" alt="Frederick William I, the Soldier King, Reviewing Troops">
+            </div>
+            <div class="text-content">
+                <p> Early 18th Century Discipline (Frederick William I's Troops): The image of the "Soldier King" reviewing his flawless ranks symbolizes the intense focus on military training, discipline, and fiscal responsibility that built the foundation of the legendary Prussian military machine.</p>
+            </div>
+        </div>
+        <!--card 6-->
+        <div class="content-row">
+            <div class="text-content">
+                <p> Mid-18th Century Dominance (Frederick the Great in Battle): This image captures Frederick II's status as a military genius. His decisive victories, particularly in the Silesian Wars and the Seven Years' War, confirmed Prussia's status as a European Great Power and permanent rival to the Austrian Habsburgs.</p>
+            </div>
+            <div class="image-content">
+                <img src="images/timeline6.jpg" alt="The Kingdom of Prussia">
+            </div>
+        </div>
+        <!--card 7-->
+        <div class="content-row">
+            <div class="image-content">
+                <img src="images/timeline7.jpg" alt="Prussia within the German Empire and Abolition">
+            </div>
+            <div class="text-content">
+                <p> 1871: The Proclamation (Versailles Ceremony): The image of the ceremony in the Hall of Mirrors at Versailles marks the political triumph of Prussia, as King Wilhelm I is proclaimed German Emperor. This event established the new German Empire under effective Prussian dominance.</p>
+            </div>
+        </div>
+        <!--card 8-->
+        <div class="content-row">
+            <div class="text-content">
+                <p> Late 19th Century Power (Industrialization Scene): This visual represents the massive industrial might and rapid economic growth that fueled the German Empire. Heavily influenced by Prussian efficiency and administrative competence, this industrial power was the foundation of the empire's military and global ambitions.</p>
+            </div>
+            <div class="image-content">
+                <img src="images/timeline8.jpg" alt="Prussia within the German Empire and Abolition">
+            </div>
+        </div>
+    </main>
+    <br>
+    <br>
+    <!--footer-->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <p style="font-size: 1rem;"> © 2025 Gavin Thomas | Web Design I Project | Northern Virginia Community College</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

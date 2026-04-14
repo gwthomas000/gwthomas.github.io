@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(
+        to bottom,         /* Direction: from top to bottom */
+        black 33.33%,      /* Black fills the first 33.33% */
+        white 33.33%,      /* White starts at 33.33% and stops at 66.66% */
+        white 66.66%,
+        #de0000 66.66%     /* Red starts at 66.66% and fills the rest */
+    );
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.flip-card-front {
+    background: linear-gradient(
+        to bottom,         /* Direction: from top to bottom */
+        black 33.33%,      /* Black fills the first 33.33% */
+        white 33.33%,      /* White starts at 33.33% and stops at 66.66% */
+        white 66.66%,
+        #de0000 66.66%     /* Red starts at 66.66% and fills the rest */
+    );
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar Component Start -->
+    <!-- UPDATED: Changed background from bg-white to bg-gray-900 (Black) -->
+    <nav class="fixed top-0 left-0 w-full bg-black shadow-lg z-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Brand Section -->
+                <div class="flex-shrink-0 ">
+                    <a href="#" class="text-2xl font-bold text-indigo-600 hover:text-indigo-800 transition duration-150">
+                        <img src="images/prussia_flag.png" alt="prussia state flag" width="95" style="border-radius: 100%; margin-left: 10px;">
+                    </a>
+                </div>
+
+                <!-- Desktop Menu Links (Visible on Medium screens and up) -->
+                <div class="hidden md:flex space-x-4">
+                    <!-- UPDATED: Text color changed to text-white and hover states adjusted -->
+                    <a href="index.html" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-full text-sm font-medium transition duration-150">Home</a>
+                    <a href="timeline.html" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-full text-sm font-medium transition duration-150">Timeline</a>
+                    <a href="historical-figures.html" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-full text-sm font-medium transition duration-150">Historical Figures</a>
+                    <a href="detailed-dates.html" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-full text-sm font-medium transition duration-150">Significant Dates</a>
+                    
+                    
+                    <!-- Highlighted Link (Call-to-Action) - Retained original styling for contrast -->
+                    <a href="about.html" class="px-3 py-2 rounded-full text-sm font-medium bg-[#de0000] text-white hover:bg-[#e35453] transition duration-150 shadow-md" style="margin-right: 10px;">
+                        About
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button (Hamburger Icon - Visible on Small screens) -->
+                <div class="md:hidden">
+                    <!-- UPDATED: Hamburger icon color changed to text-white and hover adjusted -->
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition duration-150" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        
+                        <!-- Hamburger Icon (Open state) -->
+                        <svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- X Icon (Closed state) -->
+                        <svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default, toggled by JS) -->
+        <div class="md:hidden" id="mobile-menu">
+            <!-- UPDATED: Background changed to bg-gray-900 (Black) -->
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center bg-black-000">
+                <!-- UPDATED: Text color changed to text-white and hover states adjusted -->
+                <a href="index.html" class="block text-base font-medium text-white hover:bg-gray-700 hover:text-white rounded-lg py-2 px-3 transition duration-150">Home</a>
+                <a href="timeline.html" class="block text-base font-medium text-white hover:bg-gray-700 hover:text-white rounded-lg py-2 px-3 transition duration-150">Timeline</a>
+                <a href="historical-figures.html" class="block text-base font-medium text-white hover:bg-gray-700 hover:text-white rounded-lg py-2 px-3 transition duration-150">Historical Figures</a>
+                <a href="detailed-dates.html" class="block text-base font-medium text-white hover:bg-gray-700 hover:text-white rounded-lg py-2 px-3 transition duration-150">Significant Dates</a>
+                
+                
+                <!-- Highlighted Link (Call-to-Action) -->
+                <a href="about.html" class="block text-base font-medium mt-1 bg-[#de0000] text-white hover:bg-[#e35453] rounded-lg py-2 px-3 shadow-md transition duration-150">
+                    About
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navigation Bar Component End -->
+
+    <!-- Main Content Area -->
+    <!-- (Your main content would go here, which is fine as-is) -->
+    
+    <!-- JavaScript for Mobile Menu Toggle -->
+
+    <!--dates cards-->
+    <div class="pt-20">
+        <h2 class="text-4xl text-center text-white my-8"> Significant dates</h2>
+        <div class="grid-6-cards">
+            <!--card 1-->
+            <div class="time-card flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p style="color: black; font-size: 2rem;"> 1230: The Beginning of the Prussian Crusade</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p> This year marks the formal start of the Prussian Crusade by the Teutonic Knights. Under the authority granted by the Holy Roman Emperor, the Knights began the conquest and Christianization of the native Baltic Prussian tribes. This action established the Monastic State (Ordensstaat) and created the territorial and political core that would eventually become Prussia.</p>
+                    </div>
+                </div>
+            </div>
+            <!--card 2-->
+            <div class="time-card flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p style="color: black; font-size: 2rem;"> 1525: The Secularization of the State</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p> This is the birth year of the Duchy of Prussia. The last Grand Master, Albert of Hohenzollern, converted to Lutheranism and secularized the Catholic Monastic State, dissolving the Teutonic Order. The territory became a hereditary, secular duchy, the first major state to officially adopt Protestantism, fundamentally changing its identity.</p>
+                    </div>
+                </div>
+            </div>
+            <!--card 3-->
+            <div class="time-card flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p style="color: black; font-size: 2rem;"> 1660: Full Sovereignty Achieved</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p> Through the Treaty of Oliva, Frederick William, the "Great Elector," secured the full and absolute sovereignty of the Duchy of Prussia from the Polish Crown. This act ended centuries of Polish feudal overlordship and finalized the consolidation of power in the hands of the Hohenzollern dynasty of Brandenburg-Prussia.</p>
+                    </div>
+                </div>
+            </div>
+            <!--card 4-->
+            <div class="time-card flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p style="color: black; font-size: 2rem;"> 1701: Proclamation of the Kingdom</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p> This year marks the elevation of the state from a duchy to the Kingdom of Prussia. Elector Frederick III crowned himself King Frederick I, an act that formalized the state's rise in status and power, setting the stage for its eventual recognition as a European Great Power.</p>
+                    </div>
+                </div>
+            </div>
+            <!--card 5-->
+            <div class="time-card flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p style="color: black; font-size: 2rem;"> 1740: Accession of Frederick the Great</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p> The accession of Frederick II "the Great" signaled the start of Prussia's true imperial ambitions. He immediately seized the wealthy province of Silesia from Austria, cementing Prussia's place as a dominant military power and establishing the famous Austro-Prussian rivalry for control of the German states.</p>
+                    </div>
+                </div>
+            </div>
+            <!--card 6-->
+            <div class="time-card flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <p style="color: black; font-size: 2rem;"> 1871: Unification of Germany</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <p> This is the culmination of Prussian history. Following the victory in the Franco-Prussian War, the German states were united, and the King of Prussia, Wilhelm I, was proclaimed German Emperor at Versailles. Prussia became the largest and most politically dominant state within the new German Empire.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <!--footer-->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <p> © 2025 Gavin Thomas | Web Design I Project | Northern Virginia Community College</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Ensure the script runs only after the entire page is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Mobile Menu Toggle Logic (Your original code)
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+
+            // Start with the menu hidden
+            menu.classList.add('hidden');
+            iconOpen.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+
+            button.addEventListener('click', () => {
+                const isMenuOpen = menu.classList.contains('hidden');
+
+                if (isMenuOpen) {
+                    // Open the menu
+                    menu.classList.remove('hidden');
+                    iconOpen.classList.add('hidden');
+                    iconClose.classList.remove('hidden');
+                } else {
+                    // Close the menu
+                    menu.classList.add('hidden');
+                    iconOpen.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                }
+            });
+
+            // 2. Card Flip Logic (The consolidated new code)
+            const cards = document.querySelectorAll('.flip-card');
+
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    // Toggles the 'flipped' class, which triggers the CSS transition
+                    card.classList.toggle('flipped');
+                });
+            });
+        });
+    </script>
+            
+
+</body>
+</html>

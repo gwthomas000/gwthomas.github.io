@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .viewport {
+            width: 100%;
+            height: 625px;
+            border: none;
+            overflow: auto;
+        }
+
+        .viewport-container {
+            width: 80%;
+            border: 2px solid black;
+            margin: auto;
+            background-color: white;
+        }
+
+        /* thanks gemini */
+        body {
+    background: linear-gradient(
+        to bottom,         /* Direction: from top to bottom */
+        black 33.33%,      /* Black fills the first 33.33% */
+        white 33.33%,      /* White starts at 33.33% and stops at 66.66% */
+        white 66.66%,
+        #de0000 66.66%     /* Red starts at 66.66% and fills the rest */
+    );
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar Component Start -->
+    <!-- UPDATED: Changed background from bg-white to bg-gray-900 (Black) -->
+    <nav class="fixed top-0 left-0 w-full bg-black shadow-lg z-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Brand Section -->
+                <div class="flex-shrink-0 ">
+                    <a href="#" class="text-2xl font-bold text-indigo-600 hover:text-indigo-800 transition duration-150">
+                        <img src="images/prussia_flag.png" alt="prussia state flag" width="95" style="border-radius: 100%; margin-left: 10px;">
+                    </a>
+                </div>
+
+                <!-- Desktop Menu Links (Visible on Medium screens and up) -->
+                <div class="hidden md:flex space-x-4">
+                    <!-- UPDATED: Text color changed to text-white and hover states adjusted -->
+                    <a href="index.html" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-full text-sm font-medium transition duration-150">Home</a>
+                    <a href="timeline.html" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-full text-sm font-medium transition duration-150">Timeline</a>
+                    <a href="historical-figures.html" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-full text-sm font-medium transition duration-150">Historical Figures</a>
+                    <a href="detailed-dates.html" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-full text-sm font-medium transition duration-150">Significant Dates</a>
+                    
+                    
+                    <!-- Highlighted Link (Call-to-Action) - Retained original styling for contrast -->
+                    <a href="about.html" class="px-3 py-2 rounded-full text-sm font-medium bg-[#de0000] text-white hover:bg-[#e35453] transition duration-150 shadow-md" style="margin-right: 10px;">
+                        About
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button (Hamburger Icon - Visible on Small screens) -->
+                <div class="md:hidden">
+                    <!-- UPDATED: Hamburger icon color changed to text-white and hover adjusted -->
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white transition duration-150" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        
+                        <!-- Hamburger Icon (Open state) -->
+                        <svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- X Icon (Closed state) -->
+                        <svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default, toggled by JS) -->
+        <div class="md:hidden" id="mobile-menu">
+            <!-- UPDATED: Background changed to bg-gray-900 (Black) -->
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center bg-black-000">
+                <!-- UPDATED: Text color changed to text-white and hover states adjusted -->
+                <a href="index.html" class="block text-base font-medium text-white hover:bg-gray-700 hover:text-white rounded-lg py-2 px-3 transition duration-150">Home</a>
+                <a href="timeline.html" class="block text-base font-medium text-white hover:bg-gray-700 hover:text-white rounded-lg py-2 px-3 transition duration-150">Timeline</a>
+                <a href="historical-figures.html" class="block text-base font-medium text-white hover:bg-gray-700 hover:text-white rounded-lg py-2 px-3 transition duration-150">Historical Figures</a>
+                <a href="detailed-dates.html" class="block text-base font-medium text-white hover:bg-gray-700 hover:text-white rounded-lg py-2 px-3 transition duration-150">Significant Dates</a>
+                
+                
+                <!-- Highlighted Link (Call-to-Action) -->
+                <a href="about.html" class="block text-base font-medium mt-1 bg-[#de0000] text-white hover:bg-[#e35453] rounded-lg py-2 px-3 shadow-md transition duration-150">
+                    About
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navigation Bar Component End -->
+
+    <!-- Main Content Area -->
+    <!-- (Your main content would go here, which is fine as-is) -->
+    
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+
+            // Start with the menu hidden
+            menu.classList.add('hidden');
+            iconOpen.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+
+            button.addEventListener('click', () => {
+                const isMenuOpen = menu.classList.contains('hidden');
+
+                if (isMenuOpen) {
+                    // Open the menu
+                    menu.classList.remove('hidden');
+                    iconOpen.classList.add('hidden');
+                    iconClose.classList.remove('hidden');
+                } else {
+                    // Close the menu
+                    menu.classList.add('hidden');
+                    iconOpen.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+    <!--padding for the nav bar-->
+    <br>
+    <br>
+    <br>
+    <!--why prussia-->
+    <h1 style="text-align: center; font-size: 3rem; color: white;"> Why Prussia?</h1>
+    
+    <div class="content-row image-left" style="max-width: 1200px;">
+        <div class="image-content">
+            <img src="images/prussia_flag.png" alt="flag of prussia">
+        </div>
+        <div class="text-content">
+            <p class="white-text" style="font-size: 1.5rem;"> I have always been interested in everything history, especially 20th century Europe. Germany is rich in history and, while it can be confusing at times, is very interesting. I thought that discussing about the history of Prussia, the precursor to Germany, would make for a unique and interesting topic to make my website about.</p>
+        </div>
+    </div>
+
+    <!--header-->
+    <div class="word-box">
+        <h1 style="text-align: center; font-size: 3rem; color: white;"> My Growth</h1>
+    </div>
+
+    <!--viewport-->
+    <div class="viewport-container">
+        <iframe src="midterm_1/index.html" class="viewport" title="midterm_1">
+        </iframe>
+    </div>
+    
+    <!--text-->
+    <div class="sub-text-box">
+        <p class="text-white">
+            This was my very first web page I had made after about 1 month of learning html. While I was very proud of it then, I feel like I have grown a lot since. On my first page there was no css used since I did not know how to code css, making the site look very barren. Yet I still feel like I displayed my skills well, especially with the timeline table. Looking back, I know I have grown a lot, and will continue to grow and advance my html skills. If you have any questions or suggestions, please email me through <a href="mailto:gwt43895@email.vccs.edu" style="color: red;"> this link.</a>
+        </p>
+    </div>
+    <br>
+    <br>
+    <!--footer-->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <p> © 2025 Gavin Thomas | Web Design I Project | Northern Virginia Community College</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
